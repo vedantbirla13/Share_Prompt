@@ -33,7 +33,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           onClick={handleProfileClick}
         >
           <Image
-            src={post.creator.image}
+            src={post?.creator?.image}
             alt="user_image"
             width={40}
             height={40}
@@ -41,10 +41,10 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           />
           <div className="flex flex-col">
             <h3 className="font-satoshi font-semibold text-gray-900">
-              {post.creator.username}
+              {post?.creator?.username}
             </h3>
             <p className="font-inter text-sm text-gray-500">
-              {post.creator.email}
+              {post?.creator?.email}
             </p>
           </div>
         </div>
@@ -52,7 +52,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         <div className="copy_btn" onClick={handleCopy}>
           <Image
             src={
-              copy === post.prompt
+              copy === post?.prompt
                 ? "/assets/icons/tick.svg"
                 : "/assets/icons/copy.svg"
             }
@@ -62,15 +62,15 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         </div>
       </div>
 
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
+      <p className="my-4 font-satoshi text-sm text-gray-700">{post?.prompt}</p>
       <p
         className="font-inter text-sm blue_gradient cursor-pointer"
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
+        onClick={() => handleTagClick && handleTagClick(post?.tag)}
       >
-        {post.tag}
+        {post?.tag}
       </p>
 
-      {session?.user.id === post.creator._id && pathname === "/profile" && (
+      {session?.user.id === post?.creator?._id && pathname === "/profile" && (
         <div className="mt-3 flex-between gap-4 border-t border-gray-100 pt-3">
           <Image
             src="/assets/icons/edit.svg"
